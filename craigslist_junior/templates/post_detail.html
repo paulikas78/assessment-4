@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>post: {{ post.title }}</h1>
+  <a href="{% url 'post_edit' category_id=category.id post_id=post.id %}">edit {{ post.title }}</a>
+  
+  <form method='POST' action="{% url 'post_delete' category_id=category.id post_id=post.id %}">
+    {% csrf_token %}
+    <button type='submit'>delete {{ post.title }}</button>
+  </form>
+  <a href="{% url 'categories' %}">Home</a>
+
+{% endblock %}
+
+
